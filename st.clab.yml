@@ -210,8 +210,8 @@ topology:
       env:
         GF_INSTALL_PLUGINS: "andrewbmchugh-flow-panel"
         # env vars to enable anonymous access
-        HTTPS_PROXY: "http://inban1b-proxy.apac.nsn-net.net:8080"
-        HTTP_PROXY: "http://inban1b-proxy.apac.nsn-net.net:8080"
+        # HTTPS_PROXY: "x.x.x.x:port"
+        # HTTP_PROXY: "x.x.x.x:port"
         GF_ORG_ROLE: "Admin"
         GF_ORG_NAME: "Main Org"
         GF_AUTH_ANONYMOUS_ENABLED: "true"
