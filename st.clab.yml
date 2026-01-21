@@ -77,8 +77,8 @@ topology:
         graph-geoCoordinateLng: "9.051862695951726"
         graph-icon: router
         graph-groupLabelPos: bottom-center
-    leaf3:
-      startup-config: configs/fabric/leaf3.cfg
+    borderleaf:
+      startup-config: configs/fabric/borderleaf.cfg
       mgmt-ipv4: 172.80.80.13
       group: leaf
       ports:
@@ -106,6 +106,7 @@ topology:
         - ip address add 172.17.0.1/24 dev eth1.10
         - ip -6 address add 2002::172:17:0:1/96 dev eth1.10
         - ip route add 10.0.0.0/8 via 10.1.1.254 dev eth1.11
+        - sh -c 'echo "root:Nokia@123" | chpasswd'
       group: server
       image: ghcr.io/srl-labs/network-multitool
       labels:
@@ -129,6 +130,7 @@ topology:
         - ip address add 172.17.0.2/24 dev eth1.10
         - ip -6 address add 2002::172:17:0:2/96 dev eth1.10
         - ip route add 10.0.0.0/8 via 10.2.2.254 dev eth1.12
+        - sh -c 'echo "root:Nokia@123" | chpasswd'
       group: server
       image: ghcr.io/srl-labs/network-multitool
       labels:
@@ -152,6 +154,7 @@ topology:
         - ip address add 172.17.0.3/24 dev eth1.10
         - ip -6 address add 2002::172:17:0:3/96 dev eth1.10
         - ip route add 10.0.0.0/8 via 10.3.3.254 dev eth1.13
+        - sh -c 'echo "root:Nokia@123" | chpasswd'
       group: server
       image: ghcr.io/srl-labs/network-multitool
       labels:
@@ -265,10 +268,10 @@ topology:
   links:
     - endpoints: [ spine1:e1-1, leaf1:e1-49 ]
     - endpoints: [ spine1:e1-2, leaf2:e1-49 ]
-    - endpoints: [ spine1:e1-3, leaf3:e1-49 ]
+    - endpoints: [ spine1:e1-3, borderleaf:e1-49 ]
     - endpoints: [ spine2:e1-1, leaf1:e1-50 ]
     - endpoints: [ spine2:e1-2, leaf2:e1-50 ]
-    - endpoints: [ spine2:e1-3, leaf3:e1-50 ]
+    - endpoints: [ spine2:e1-3, borderleaf:e1-50 ]
     - endpoints: [ leaf1:e1-1, client1:eth1 ]
     - endpoints: [ leaf2:e1-1, client2:eth1 ]
-    - endpoints: [ leaf3:e1-1, client3:eth1 ]
+    - endpoints: [ borderleaf:e1-1, client3:eth1 ]
